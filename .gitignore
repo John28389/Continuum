@@ -1,0 +1,53 @@
+# Environment / secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# Dependencies
+node_modules/
+.pnpm-store/
+.yarn/
+.yarn-cache/
+
+# Build output
+dist/
+build/
+.next/
+.nuxt/
+.output/
+.vercel/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+
+# Local tooling
+.turbo/
+.cache/
+.vercel
+
+# TypeScript / build info
+*.tsbuildinfo
+
+# Test artifacts
+/playwright-report/
+/test-results/
+/blob-report/
+.playwright/
+
+# Supabase local
+supabase/.temp/
+supabase/.branches/
+

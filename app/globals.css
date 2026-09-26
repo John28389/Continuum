@@ -1,0 +1,197 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Design tokens.
+ *
+ * Aesthetic target: system, clarity, progression, control.
+ * Deliberately not corporate, deliberately not childish.
+ *
+ * The four content classes below are load-bearing, not decorative. The product
+ * requires that a mission, a maintenance task, a curiosity and leisure never
+ * read as equally urgent, so each gets its own reserved hue and they are never
+ * used interchangeably.
+ *
+ * Contrast is WCAG AA in both themes: 4.5:1 for every text pairing the
+ * interface uses, 3:1 for control edges and the focus ring. M18 measured each
+ * pairing and moved only lightness where one fell short, so every hue and
+ * chroma is still the one chosen in M7. See docs/decisions.md.
+ */
+
+:root {
+  --radius: 0.5rem;
+
+  --background: oklch(0.99 0.002 265);
+  --foreground: oklch(0.21 0.012 265);
+
+  --surface: oklch(0.972 0.003 265);
+  --surface-raised: oklch(1 0 0);
+
+  --border: oklch(0.9 0.005 265);
+  --border-strong: oklch(0.645 0.009 265);
+
+  --muted: oklch(0.955 0.004 265);
+  --muted-foreground: oklch(0.51 0.013 265);
+
+  /* Content classes */
+  --mission: oklch(0.54 0.155 58);
+  --mission-foreground: oklch(0.99 0.008 58);
+  --mission-subtle: oklch(0.95 0.03 58);
+
+  --maintenance: oklch(0.52 0.021 258);
+  --maintenance-subtle: oklch(0.95 0.006 258);
+
+  --curiosity: oklch(0.545 0.145 292);
+  --curiosity-subtle: oklch(0.955 0.025 292);
+
+  --leisure: oklch(0.52 0.11 158);
+  --leisure-subtle: oklch(0.95 0.03 158);
+
+  /* Signals */
+  --success: oklch(0.53 0.125 158);
+  --warning: oklch(0.56 0.145 78);
+  --danger: oklch(0.545 0.19 25);
+  --danger-foreground: oklch(0.99 0.01 25);
+
+  --ring: oklch(0.54 0.155 58);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --background: oklch(0.17 0.012 265);
+    --foreground: oklch(0.95 0.005 265);
+
+    --surface: oklch(0.21 0.014 265);
+    --surface-raised: oklch(0.25 0.015 265);
+
+    --border: oklch(0.31 0.014 265);
+    --border-strong: oklch(0.53 0.016 265);
+
+    --muted: oklch(0.24 0.013 265);
+    --muted-foreground: oklch(0.68 0.014 265);
+
+    --mission: oklch(0.76 0.145 65);
+    --mission-foreground: oklch(0.19 0.03 65);
+    --mission-subtle: oklch(0.28 0.05 65);
+
+    --maintenance: oklch(0.66 0.022 258);
+    --maintenance-subtle: oklch(0.26 0.012 258);
+
+    --curiosity: oklch(0.72 0.13 292);
+    --curiosity-subtle: oklch(0.27 0.045 292);
+
+    --leisure: oklch(0.72 0.115 158);
+    --leisure-subtle: oklch(0.26 0.04 158);
+
+    --success: oklch(0.72 0.115 158);
+    --warning: oklch(0.78 0.135 78);
+    --danger: oklch(0.68 0.17 25);
+    --danger-foreground: oklch(0.17 0.03 25);
+
+    --ring: oklch(0.76 0.145 65);
+  }
+}
+
+.dark {
+  --background: oklch(0.17 0.012 265);
+  --foreground: oklch(0.95 0.005 265);
+
+  --surface: oklch(0.21 0.014 265);
+  --surface-raised: oklch(0.25 0.015 265);
+
+  --border: oklch(0.31 0.014 265);
+  --border-strong: oklch(0.53 0.016 265);
+
+  --muted: oklch(0.24 0.013 265);
+  --muted-foreground: oklch(0.68 0.014 265);
+
+  --mission: oklch(0.76 0.145 65);
+  --mission-foreground: oklch(0.19 0.03 65);
+  --mission-subtle: oklch(0.28 0.05 65);
+
+  --maintenance: oklch(0.66 0.022 258);
+  --maintenance-subtle: oklch(0.26 0.012 258);
+
+  --curiosity: oklch(0.72 0.13 292);
+  --curiosity-subtle: oklch(0.27 0.045 292);
+
+  --leisure: oklch(0.72 0.115 158);
+  --leisure-subtle: oklch(0.26 0.04 158);
+
+  --success: oklch(0.72 0.115 158);
+  --warning: oklch(0.78 0.135 78);
+  --danger: oklch(0.68 0.17 25);
+  --danger-foreground: oklch(0.17 0.03 25);
+
+  --ring: oklch(0.76 0.145 65);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-mission: var(--mission);
+  --color-mission-foreground: var(--mission-foreground);
+  --color-mission-subtle: var(--mission-subtle);
+
+  --color-maintenance: var(--maintenance);
+  --color-maintenance-subtle: var(--maintenance-subtle);
+
+  --color-curiosity: var(--curiosity);
+  --color-curiosity-subtle: var(--curiosity-subtle);
+
+  --color-leisure: var(--leisure);
+  --color-leisure-subtle: var(--leisure-subtle);
+
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-danger-foreground: var(--danger-foreground);
+
+  --color-ring: var(--ring);
+
+  --radius-base: var(--radius);
+
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono:
+    ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Focus must always be visible: the app is keyboard-navigable by design. */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
